@@ -6,8 +6,6 @@
 
 #include "list_node.h"
 
-typedef int Number;
-
 link reverse(link x) {
   link r = NULL, y = x, next;
   while (y) {
