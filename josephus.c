@@ -1,13 +1,11 @@
+// Program 3.9
+// Circular list Josephus problem
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef int Item;
-typedef struct node *link;
-struct node {
-  Item item;
-  link next;
-};
+#include "list_node.h"
 
 int main(int argc, char *argv[]) {
   if (argc < 3) {
