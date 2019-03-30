@@ -2,7 +2,8 @@
   "window.zoomLevel": 0,
   "files.associations": {
     "stdlib.h": "c",
-    "list_node.h": "c"
+    "list_node.h": "c",
+    "stdio.h": "c"
   },
   "files.exclude": {
     "**/*.out": true,
