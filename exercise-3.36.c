@@ -1,3 +1,7 @@
+// Exercise 3.36
+// Rearrange a list to put the nodes in even positions after the nodes in odd
+// positions.
+
 #include <stdio.h>
 #include <stdlib.h>
 

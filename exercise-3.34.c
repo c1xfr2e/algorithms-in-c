@@ -1,3 +1,6 @@
+// Exercise 3.34
+// Move the largest item on a list to the final node.
+
 #include <stdio.h>
 #include <stdlib.h>
 
