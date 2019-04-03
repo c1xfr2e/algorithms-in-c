@@ -1,7 +1,9 @@
 // Program 4.3
 // Infix-to-postfix conversion
+//
 // gcc -std=c11 -g program-4.3.c program-4.4.c -o program-4.3
 // ./program-4.3 "( 5 * ( ( ( 9 + 8 ) * ( 4 * 6 ) ) + 7 ) )"
+// The input expression needs to be fully parenthesized.
 
 #include <stdio.h>
 #include <string.h>
