@@ -38,11 +38,11 @@ int QUEUEempty(Q q) {
 
 void QUEUEput(Q q, Item item) {
     if (q->head == NULL) {
-        q->tail = NEW(item, q->head);
+        q->tail = NEW(item, q->head); // actually q->head is NULL as the if statement says
         q->head = q->tail;
         return;
     }
-    q->tail->next = NEW(item, q->tail->next);
+    q->tail->next = NEW(item, q->tail->next); // q->tail->next is NULL
     q->tail = q->tail->next;
 }
 
