@@ -17,7 +17,7 @@ void native_z(char *s, int Z[], int N) {
 }
 
 void advanced_z(char *s, int Z[], int N) {
-    int lt = 0, rt = 0, i, k, p, z, n;
+    int lt = 0, rt = 0, k, p, q, z, n;
     Z[0] = N;
     for (k = 1; k < N; k++) {
         if (k > rt) { // naive, brute force
@@ -29,8 +29,18 @@ void advanced_z(char *s, int Z[], int N) {
                 lt = k;
                 rt = k + n - 1;
             }
-        } else {
-            Z[k] = -1;
+        } else { // inside current z-box
+            p = k - lt;
+            if (k + Z[p] <= rt) {
+                Z[k] = Z[p];
+            } else {
+                q = rt + 1;
+                while (q < N && s[q] == s[q - k])
+                    q++;
+                Z[k] = q - k;
+                lt = k;
+                rt = q - 1;
+            }
         }
     }
 }
