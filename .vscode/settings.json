@@ -1,4 +1,9 @@
 {
+  "workbench.colorCustomizations": {
+    "[One Dark Pro]": {
+      "editor.background": "#10101063",
+    }
+  },
   "window.zoomLevel": 0,
   "files.associations": {
     "stdlib.h": "c",
