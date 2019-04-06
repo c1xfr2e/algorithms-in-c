@@ -53,10 +53,16 @@ bool test_z(int a[], int b[], int N) {
 }
 
 int main(int argc, char *argv[]) {
-    int N = strlen(argv[1]);
+    char *s = argv[1];
+    int N = strlen(s);
     int *Z = malloc(N * sizeof *Z);
-    advanced_z(argv[1], Z, N);
-    for (int i = 0; i < N; i++)
-        printf("%d ", Z[i]);
+    advanced_z(s, Z, N);
+    for (int i = 0; i < N; i++) {
+        printf("%2c ", s[i]);
+    }
+    printf("\n");
+    for (int i = 0; i < N; i++) {
+        printf("%2d ", Z[i]);
+    }
     return 0;
 }
