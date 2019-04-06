@@ -17,6 +17,8 @@ link reverse(link x) {
     return r;
 }
 
+link reverse_r(link x);
+
 int main(int argc, char *argv[]) {
     int N = atoi(argv[1]);
     link h = malloc(sizeof *h), x = h;
@@ -29,8 +31,14 @@ int main(int argc, char *argv[]) {
     }
 
     h = reverse(h);
-    for (link l = h; h != NULL; h = h->next) {
-        printf("%d ", h->item);
+    for (link l = h; l != NULL; l = l->next) {
+        printf("%d ", l->item);
     }
+    printf("\n");
+    h = reverse_r(h);
+    for (link l = h; l != NULL; l = l->next) {
+        printf("%d ", l->item);
+    }
+
     return 0;
 }
