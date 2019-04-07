@@ -8,15 +8,8 @@ void kmp_gen_next(char *s, int *N, int len) {
     N[0] = 0;
     int i, k;
     for (i = 1; i < len; i++) {
-        k = N[i - 1];
-        while (true) {
-            if (s[i] == s[k]) {
-                break;
-            }
-            if (--k == -1)
-                break;
-            k = N[k];
-        }
+        for (k = N[i - 1]; (s[i] != s[k]) && (--k != -1); k = N[k])
+            ;
         N[i] = k + 1;
     }
 }
