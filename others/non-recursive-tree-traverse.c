@@ -22,9 +22,9 @@ link build_tree(char **ps) {
     link x = malloc(sizeof *x);
     x->item = c;
     x->l = build_tree(ps);
-    (*ps)++;
+    // (*ps)++;
     x->r = build_tree(ps);
-    (*ps)++;
+    // (*ps)++;
     return x;
 }
 
