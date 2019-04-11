@@ -6,13 +6,27 @@
 
 #include "../item_int.h"
 
+typedef struct node *link;
 struct node {
     Item item;
     struct node *l;
     struct node *r;
 };
 
-typedef struct node *link;
+#define NEW_NODE(i)                 \
+    ({                              \
+        link t = malloc(sizeof *t); \
+        t->item = i;                \
+        t->l = t->r = NULL;         \
+        t;                          \
+    })
+
+#define foo(x)                                  \
+    ({                                          \
+        int xx = (x);                           \
+        int result = (xx > 32) ? xx : (2 * xx); \
+        result;                                 \
+    })
 
 link build_tree(char **ps) {
     char c = **ps;
@@ -40,7 +54,35 @@ void traverse(link x, void (*visit)(Item)) {
     traverse(x->r, visit);
 }
 
+#define STACK_MAX 100
+link stack[STACK_MAX];
+int top = STACK_MAX;
+
+link pop() {
+    return stack[top++];
+}
+
+void push(link x) {
+    stack[--top] = x;
+}
+
+void try_stack() {
+    push(NEW_NODE(1));
+    push(NEW_NODE(2));
+    push(NEW_NODE(3));
+    printf("%d ", pop()->item);
+    printf("%d ", pop()->item);
+    push(NEW_NODE(4));
+    push(NEW_NODE(5));
+    printf("%d ", pop()->item);
+    push(NEW_NODE(6));
+    printf("%d ", pop()->item);
+    printf("%d ", pop()->item);
+    printf("%d \n", pop()->item);
+}
+
 int main(int argc, char *argv[]) {
+    try_stack();
     char *s = "ab#c##de###"; // argv[1];
     link x = build_tree(&s);
     traverse(x, print_item);
