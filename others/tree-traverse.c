@@ -76,12 +76,12 @@ link build_tree(char **ps) {
     return x;
 }
 
-void traverse(link x, void (*visit)(Item)) {
+void traverse_pre(link x, void (*visit)(Item)) {
     if (x == NULL)
         return;
     visit(x->item);
-    traverse(x->l, visit);
-    traverse(x->r, visit);
+    traverse_pre(x->l, visit);
+    traverse_pre(x->r, visit);
 }
 
 // Traverse tree in preorder non-recursively.
@@ -101,6 +101,14 @@ void traverse_pre_nr(link tree, void (*visit)(Item)) {
     }
 }
 
+void traverse_in(link x, void (*visit)(Item)) {
+    if (x == NULL)
+        return;
+    traverse_in(x->l, visit);
+    visit(x->item);
+    traverse_in(x->r, visit);
+}
+
 void print_item(Item item) {
     printf("%c ", item);
 }
@@ -109,9 +117,12 @@ int main(int argc, char *argv[]) {
     // try_stack();
     char *s = argv[1];
     link x = build_tree(&s);
-    traverse(x, print_item);
+    traverse_pre(x, print_item);
     printf("\n");
     traverse_pre_nr(x, print_item);
     printf("\n");
+    traverse_in(x, print_item);
+    printf("\n");
+
     return 0;
 }
