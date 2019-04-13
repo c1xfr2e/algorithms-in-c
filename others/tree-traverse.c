@@ -56,7 +56,7 @@ bool stack_empty() {
     return top == STACK_MAX;
 }
 
-void stack_clear() {
+void stack_init() {
     top = STACK_MAX;
 }
 
@@ -98,7 +98,7 @@ void traverse_pre(link x, void (*visit)(Item)) {
 
 // Traverse tree in preorder non-recursively.
 void traverse_pre_nr(link tree, void (*visit)(Item)) {
-    stack_clear();
+    stack_init();
     link x = tree;
     while (true) {
         if (!x) {
@@ -122,7 +122,7 @@ void traverse_in(link x, void (*visit)(Item)) {
 }
 
 void traverse_in_nr(link tree, void (*visit)(Item)) {
-    stack_clear();
+    stack_init();
     link x = tree;
     while (x) {
         stack_push(x);
@@ -148,7 +148,7 @@ void traverse_post(link x, void (*visit)(Item)) {
 }
 
 void traverse_post_nr(link tree, void (*visit)(Item)) {
-    stack_clear();
+    stack_init();
     link x = tree;
     stack_push(NODE(x));
     while (!stack_empty()) {
