@@ -7,7 +7,8 @@
   "files.associations": {
     "stdlib.h": "c",
     "list_node.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "stdbool.h": "c"
   },
   "files.exclude": {
     "**/*.out": true,
