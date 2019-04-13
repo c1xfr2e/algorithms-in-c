@@ -1,6 +1,7 @@
+// gcc tree-traverse.c
+// ./a.out abc##d##ef##g##
 
 #include <stdbool.h>
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -109,6 +110,24 @@ void traverse_in(link x, void (*visit)(Item)) {
     traverse_in(x->r, visit);
 }
 
+void traverse_in_nr(link tree, void (*visit)(Item)) {
+    stack_clear();
+    link x = tree;
+    while (x) {
+        stack_push(x);
+        x = x->l;
+    }
+    while (!stack_empty()) {
+        x = stack_pop();
+        visit(x->item);
+        x = x->r;
+        while (x) {
+            stack_push(x);
+            x = x->l;
+        }
+    }
+}
+
 void print_item(Item item) {
     printf("%c ", item);
 }
@@ -123,6 +142,7 @@ int main(int argc, char *argv[]) {
     printf("\n");
     traverse_in(x, print_item);
     printf("\n");
+    traverse_in_nr(x, print_item);
 
     return 0;
 }
