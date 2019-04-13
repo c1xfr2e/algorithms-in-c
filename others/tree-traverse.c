@@ -7,11 +7,17 @@
 
 #include "../item_int.h"
 
+enum NodeType {
+    kNode = 0,
+    kItem = 1,
+};
+
 typedef struct node *link;
 struct node {
     Item item;
     struct node *l;
     struct node *r;
+    enum NodeType type; // for postorder traverse
 };
 
 #define NEW_NODE(i)                 \
@@ -22,11 +28,16 @@ struct node {
         t;                          \
     })
 
-#define foo(x)                                  \
-    ({                                          \
-        int xx = (x);                           \
-        int result = (xx > 32) ? xx : (2 * xx); \
-        result;                                 \
+#define NODE(n)          \
+    ({                   \
+        n->type = kNode; \
+        n;               \
+    })
+
+#define ITEM(n)          \
+    ({                   \
+        n->type = kItem; \
+        n;               \
     })
 
 #define STACK_MAX 100
@@ -128,6 +139,32 @@ void traverse_in_nr(link tree, void (*visit)(Item)) {
     }
 }
 
+void traverse_post(link x, void (*visit)(Item)) {
+    if (x == NULL)
+        return;
+    traverse_post(x->l, visit);
+    traverse_post(x->r, visit);
+    visit(x->item);
+}
+
+void traverse_post_nr(link tree, void (*visit)(Item)) {
+    stack_clear();
+    link x = tree;
+    stack_push(NODE(x));
+    while (!stack_empty()) {
+        x = stack_pop();
+        if (x->type == kNode) {
+            stack_push(ITEM(x));
+            if (x->r)
+                stack_push(NODE(x->r));
+            if (x->l)
+                stack_push(NODE(x->l));
+        } else {
+            visit(x->item);
+        }
+    }
+}
+
 void print_item(Item item) {
     printf("%c ", item);
 }
@@ -136,13 +173,20 @@ int main(int argc, char *argv[]) {
     // try_stack();
     char *s = argv[1];
     link x = build_tree(&s);
+    printf("preorder\n\t");
     traverse_pre(x, print_item);
-    printf("\n");
+    printf("\n\t");
     traverse_pre_nr(x, print_item);
     printf("\n");
+    printf("inorder\n\t");
     traverse_in(x, print_item);
-    printf("\n");
+    printf("\n\t");
     traverse_in_nr(x, print_item);
+    printf("\n");
+    printf("postorder\n\t");
+    traverse_post(x, print_item);
+    printf("\n\t");
+    traverse_post_nr(x, print_item);
 
     return 0;
 }
