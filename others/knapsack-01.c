@@ -1,4 +1,7 @@
-// Program knapsack
+// 0-1 knapsack problem
+// 4 10
+// 10 40 30 50
+// 5  4  6  3
 
 #include <stdbool.h>
 #include <stdio.h>
@@ -9,8 +12,6 @@ int Vx[20], Wx[20];
 int F[20];
 
 int knapsack(int k, int w) {
-    if (k < 0 || w <= 0)
-        return 0;
     int i, j, v, max = 0;
     F[k] = -1;
     for (i = 0; i <= k; i++) {
@@ -43,10 +44,6 @@ void read() {
         scanf("%d", &w);
         Wx[i] = w;
     }
-}
-
-int main(int argc, char *argv[]) {
-    read();
     printf("V: ");
     for (int i = 0; i < N; i++)
         printf("%3d ", Vx[i]);
@@ -55,6 +52,13 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < N; i++)
         printf("%3d ", Wx[i]);
     printf("\n");
+}
+
+void print() {
+}
+
+int main(int argc, char *argv[]) {
+    read();
     printf("Max: %3d\n", knapsack(N - 1, W));
     printf("F: ");
     for (int i = 0; i < N; i++)
