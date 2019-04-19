@@ -1,5 +1,6 @@
 // Program 6.4
 // Bubble sort
+// ./a.out 2 1 4 7 3 6 5 8 0 9
 
 #include <stdio.h>
 #include <stdlib.h>
