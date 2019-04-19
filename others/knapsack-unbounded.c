@@ -12,11 +12,10 @@ int Vx[20], Wx[20];
 
 int knapsack(int w) {
     int i, v, max = 0;
-    for (i = 0; i < N; i++) {
-        if (Wx[i] <= w)
+    for (i = 0; i < N; i++)
+        if (w - Wx[i] >= 0)
             if ((v = Vx[i] + knapsack(w - Wx[i])) > max)
                 max = v;
-    }
     return max;
 }
 
