@@ -44,9 +44,6 @@ void read() {
     printf("\n");
 }
 
-void print() {
-}
-
 int main(int argc, char *argv[]) {
     read();
     printf("Max: %3d\n", knapsack(W));
