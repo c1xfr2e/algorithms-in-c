@@ -18,19 +18,15 @@
     }
 
 void shaker(Item a[], int l, int r) {
-    bool swapped = true;
-    while (swapped) {
-        swapped = false;
+    while (l < r) {
         for (int i = l; i < r; i++)
             if (less(a[i + 1], a[i])) {
                 exch(a[i + 1], a[i]);
-                swapped = true;
             }
         r--;
         for (int i = r; i > l; i--)
             if (less(a[i], a[i - 1])) {
                 exch(a[i], a[i - 1]);
-                swapped = true;
             }
         l++;
     }
