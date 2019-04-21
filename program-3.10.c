@@ -1,9 +1,12 @@
 // Program 3.10
 // Build a linked list from input integers and reverse it.
+// gcc exercise-5.15.c program-3.10.c
+// ./a.out 5 1 2 3 4 5
 
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "item_int.h"
 #include "list_node.h"
 
 link reverse(link x) {

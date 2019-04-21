@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 
+#include "item_int.h"
 #include "list_node.h"
 
 static link tail;

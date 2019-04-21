@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "item_int.h"
 #include "list_node.h"
 
 link copy_list(link head) {
