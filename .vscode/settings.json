@@ -1,7 +1,7 @@
 {
   "[c]": {
     "editor.fontFamily": "Pragmata Pro",
-    "editor.fontSize": 15,
+    "editor.fontSize": 16,
     "editor.tabSize": 4,
   },
   "files.associations": {
@@ -16,4 +16,5 @@
     "**/ipch": true,
   },
   "cSpell.enabled": false,
+  "C_Cpp.errorSquiggles": "Disabled",
 }
