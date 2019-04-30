@@ -24,6 +24,20 @@ void rotate(int A[], int L, int M, int R) {
     reverse(A, L, R);
 }
 
+int lower_bound(int A[], int v, int L, int R) {
+    while (L <= R) {
+        int m = (L + R) / 2;
+        if (A[m] < v) {
+            L = m + 1;
+        } else {
+            R = m;
+            if (R == L) // prevent infinite loop
+                break;
+        }
+    }
+    return L;
+}
+
 // merge sorted sub-array A[L,M-1] and A[M,R]
 void in_place_merge(int A[], int L, int M, int R) {
 }
