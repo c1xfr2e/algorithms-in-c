@@ -3,7 +3,7 @@
 
 #include "item_int.h"
 
-#define maxN [100];
+#define maxN 100
 
 Item aux[maxN];
 
