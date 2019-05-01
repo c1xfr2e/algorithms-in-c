@@ -30,16 +30,3 @@ void insertion(Item a[], int l, int r) {
         a[j + 1] = v;
     }
 }
-
-int main(int argc, char *argv[]) {
-    int N = argc - 1;
-    int *a = malloc(sizeof(int) * N);
-    for (int i = 0; i < N; i++) {
-        a[i] = atoi(argv[i + 1]);
-    }
-    insertion(a, 0, N - 1);
-    for (int i = 0; i < N; i++)
-        printf("%2d ", a[i]);
-
-    return 0;
-}

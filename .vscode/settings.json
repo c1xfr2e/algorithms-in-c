@@ -8,7 +8,8 @@
     "stdlib.h": "c",
     "list_node.h": "c",
     "stdio.h": "c",
-    "stdbool.h": "c"
+    "stdbool.h": "c",
+    "item_int.h": "c"
   },
   "files.exclude": {
     "**/*.out": true,
