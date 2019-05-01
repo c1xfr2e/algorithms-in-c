@@ -33,12 +33,13 @@ void mergesortAB(Item a[], int l, int r) {
     mergesortABr(a, aux, l, r);
 }
 
-int A[20];
+#define N 20
+int A[N];
 
 int main(int argc, char *argv[]) {
     srand(time(0));
-    randinit(A, 20);
-    print(A, 20);
-    mergesortAB(A, 0, 19);
-    print(A, 20);
+    randinit(A, N);
+    print(A, N);
+    mergesortAB(A, 0, N - 1);
+    print(A, N);
 }
