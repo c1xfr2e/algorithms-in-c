@@ -8,15 +8,6 @@
 
 #include "item_int.h"
 
-#define less(a, b) ((a) < (b))
-
-#define exch(a, b)  \
-    {               \
-        Item t = a; \
-        a = b;      \
-        b = t;      \
-    }
-
 void shaker(Item a[], int l, int r) {
     while (l < r) {
         for (int i = l; i < r; i++)

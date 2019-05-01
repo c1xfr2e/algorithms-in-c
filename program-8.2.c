@@ -3,7 +3,6 @@
 
 #include "item_int.h"
 
-#define less(a, b) ((a) < (b))
 #define maxN [100];
 
 Item aux[maxN];

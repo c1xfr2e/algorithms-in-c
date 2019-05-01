@@ -7,15 +7,6 @@
 
 #include "item_int.h"
 
-#define less(a, b) ((a) < (b))
-
-#define exch(a, b)  \
-    {               \
-        Item t = a; \
-        a = b;      \
-        b = t;      \
-    }
-
 void bubble(Item a[], int l, int r) {
     int i, j;
     for (i = l; i < r; i++)

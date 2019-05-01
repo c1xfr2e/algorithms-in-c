@@ -7,15 +7,6 @@
 
 #include "item_int.h"
 
-#define less(a, b) ((a) < (b))
-
-#define exch(a, b)  \
-    {               \
-        Item t = a; \
-        a = b;      \
-        b = t;      \
-    }
-
 void insertion(Item a[], int l, int r) {
     for (int i = r; i > l; i--)
         if (less(a[i], a[i - 1]))

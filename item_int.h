@@ -6,6 +6,15 @@
 
 typedef int Item;
 
+#define less(a, b) ((a) < (b))
+
+#define exch(a, b)  \
+    {               \
+        Item t = a; \
+        a = b;      \
+        b = t;      \
+    }
+
 static inline Item ITEMrand() {
     return rand() % 100;
 }

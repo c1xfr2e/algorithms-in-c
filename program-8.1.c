@@ -5,8 +5,6 @@
 
 #include "item_int.h"
 
-#define less(a, b) ((a) < (b))
-
 // assumptions:
 //  - a and b are ordered
 //  - c is disjoint from a and b
