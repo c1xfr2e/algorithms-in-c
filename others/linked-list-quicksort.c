@@ -1,4 +1,4 @@
-// Program 1
+// Quick sort on linked-list
 
 #include <stdio.h>
 #include <stdlib.h>
