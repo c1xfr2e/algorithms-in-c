@@ -13,20 +13,21 @@ struct node {
 
 static inline link randlist(int N) {
     srand(time(0));
-    link head = malloc(sizeof *head);
-    link t = head;
+    struct node head;
+    head.next = NULL;
+    link t = &head;
     for (int i = 0; i < N; i++) {
         t->next = malloc(sizeof *t);
         t = t->next;
         t->next = NULL;
         t->item = rand() % 100;
     }
-    return head;
+    return head.next;
 }
 
 static inline void printlist(link h) {
     for (link x = h; x != NULL; x = x->next) {
-        printf("%d ", x->item);
+        printf("%3d", x->item);
     }
     printf("\n");
 }
