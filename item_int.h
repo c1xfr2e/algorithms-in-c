@@ -35,4 +35,10 @@ static inline void print(Item a[], int N) {
     printf("\n");
 }
 
+static inline void printlr(Item a[], int l, int r) {
+    for (int i = l; i <= r; i++)
+        printf("%2d ", a[i]);
+    printf("\n");
+}
+
 #endif
