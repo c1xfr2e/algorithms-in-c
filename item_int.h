@@ -24,6 +24,11 @@ static inline void randinit(Item a[], int N) {
         a[i] = ITEMrand();
 }
 
+static inline void randinit2(Item a[], int N, int (*r)()) {
+    for (int i = 0; i < N; i++)
+        a[i] = r();
+}
+
 static inline void print(Item a[], int N) {
     for (int i = 0; i < N; i++)
         printf("%2d ", a[i]);
