@@ -38,7 +38,7 @@ void reverse(Item A[], int L, int R) {
     }
 }
 
-void rotate_reverse(Item A[], int L, int M, int R) {
+void rotate_by_reverse(Item A[], int L, int M, int R) {
     if (M - L <= 0 || R - M < 0)
         return;
     reverse(A, L, M - 1);
@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < strlen(s); i++)
         printf("%2c ", s[i]);
     printf("\n");
-    rotate_reverse(s, 2, 5, 11);
+    rotate_by_reverse(s, 2, 5, 11);
     for (int i = 0; i < strlen(s); i++)
         printf("%2c ", s[i]);
     return 0;
