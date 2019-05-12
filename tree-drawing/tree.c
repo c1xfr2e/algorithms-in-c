@@ -1,3 +1,5 @@
+// Render binary tree to html
+// ./a.out 123##4a##b##5678###9##x## > binary_tree.html
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -74,7 +76,7 @@ int g_texts_cnt;
 
 const char *CIRCLE = "<circle cx=%d cy=%d r=%d stroke=black fill=\"#f5f5f5\" />";
 const char *LINE = "<line x1=%d y1=%d x2=%d y2=%d style=\"stroke:grey;stroke-width:2\" />";
-const char *TEXT = "<text x=%d y=%d dx=-7 dy=5>%d</text>";
+const char *TEXT = "<text x=%d y=%d dx=-7 dy=5>%c</text>";
 
 void create_circle(link a) {
     char *s = malloc(strlen(CIRCLE) + 20);
@@ -109,18 +111,21 @@ void traverse_for_html(link t) {
     }
 }
 
-const char *HTML = "<!DOCTYPE html><html><body>\n<svg height=\"800\" width=\"800\">\n%s</svg>\n</body></html>";
+link build_tree(char **ps) {
+    char c = **ps;
+    (*ps)++;
+    if (c == '#' || c == '\0')
+        return NULL;
+    link x = malloc(sizeof *x);
+    x->Item = c;
+    x->L = build_tree(ps);
+    x->R = build_tree(ps);
+    return x;
+}
 
 int main(int argc, char *argv[]) {
-    link tree = NEW_NODE(1);
-    tree->L = NEW_NODE(2);
-    tree->R = NEW_NODE(3);
-    tree->L->L = NEW_NODE(4);
-    tree->L->R = NEW_NODE(5);
-    tree->L->R->L = NEW_NODE(6);
-    tree->L->R->R = NEW_NODE(7);
-    tree->R->L = NEW_NODE(8);
-    tree->R->R = NEW_NODE(9);
+    char *s = argv[1];
+    link tree = build_tree(&s);
 
     traverse_for_size(tree);
     traverse_for_position(tree, 0);

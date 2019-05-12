@@ -1,5 +1,6 @@
 // gcc tree-traverse.c
 // ./a.out abc##d##ef##g##
+// a#b#c#d##
 
 #include <stdbool.h>
 #include <stdio.h>
