@@ -8,9 +8,9 @@
 typedef struct node *link;
 struct node {
     int Item;
-    link L, R;
-    int H;
-    int width;
+    link L, R; // pointers to left and right child
+    int H;     // height of the node
+    int width; // width of the subtree in the painting
     float root_pos;
     int x, y;
 };
@@ -66,10 +66,10 @@ void traverse_for_position(link t, int h) {
     g_cur_x = _x;
 }
 
-#define MAX 100
-const char *g_circles[100];
-const char *g_lines[100];
-const char *g_texts[100];
+#define MAX_NODES 100
+const char *g_circles[MAX_NODES];
+const char *g_lines[MAX_NODES];
+const char *g_texts[MAX_NODES];
 int g_lines_cnt;
 int g_circles_cnt;
 int g_texts_cnt;
@@ -149,7 +149,7 @@ int main(int argc, char *argv[]) {
         elements = strcat(elements, "\n");
     }
 
-    char buf[2048];
+    char buf[2048]; // 2KB for the html text
     char *html = buf;
     html = strcat(html, "<!DOCTYPE html><html><body>\n<svg height=\"800\" width=\"800\">\n");
     html = strcat(html, elements);
