@@ -1,5 +1,7 @@
 // Render binary tree to html
-// ./a.out 123##4a##b##5678###9##x## > binary_tree.html
+//
+// Run:
+//   ./a.out 123##4a##b##5678###9##x## > binary_tree.html
 
 #include <stdio.h>
 #include <stdlib.h>
